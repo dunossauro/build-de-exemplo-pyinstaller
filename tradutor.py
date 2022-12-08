@@ -4,18 +4,7 @@ from json import load
 from tkinter import Text, ttk
 from googletrans import Translator
 from ttkthemes import ThemedTk
-
-# Import tradicional
-# from tools import local_path
-
-# Import hackeado
-# tools = __import__('tools')
-# local_path = tools.local_path
-
-# Importlib
-from importlib import import_module
-tools = import_module('tools')
-local_path = tools.local_path
+from tools import local_path
 
 base_path = local_path()
 
