@@ -38,7 +38,11 @@ jobs:
           pip install pyinstaller
 
       - name: Build with pyinstaller for ${{ matrix.config.os }}
-        run: pyinstaller tradutor.py --onefile --noconsole --add-data 'langs.json'
+        uses: knicknic/os-specific-run@v1.0.3
+        with:
+          macos: pyinstaller tradutor.py --onefile --noconsole --add-data 'langs.json:.'
+          linux: pyinstaller tradutor.py --onefile --noconsole --add-data 'langs.json:.'
+          windows: pyinstaller tradutor.py --onefile --noconsole --add-data 'langs.json;.'
 
       - name: Rename builded app
         run: mv ./dist ./dist-${{ matrix.config.os }}
